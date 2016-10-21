@@ -323,6 +323,8 @@ void bwa_cal_sa(int tid, bwaidx_t* idx, int n_seqs, bwa_seq_t *seqs,
 	int i;
 	bwt_t* bwt = idx->bwt;
 
+	idx->bns->l_pac = bwt->seq_len / 2; // temporary fix
+
 	int8_t* seen_nodes_marks = malloc(idx->bns->n_seqs * sizeof(int8_t));
 	uint64_t index;
 	for(index = 0; index < idx->bns->n_seqs; ++index) {
