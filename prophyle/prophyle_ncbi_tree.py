@@ -72,6 +72,7 @@ def assign_sequences(taxid_map_f, seqs, log):
     with open(taxid_map_f, 'r') as taxid_map:
         for line in taxid_map:
             acc, taxid = line.split('\t')
+            acc = acc.split('.')[0]
             taxid = int(taxid)
             try:
                 taxa2acc[taxid].append(acc)
@@ -79,7 +80,6 @@ def assign_sequences(taxid_map_f, seqs, log):
                 taxa2acc[taxid] = [acc]
                 pass
             acc2taxa[acc] = taxid
-
     for acc, dic in seqs.items():
         try:
             taxid = acc2taxa[acc]
